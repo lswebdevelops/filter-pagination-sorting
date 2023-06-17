@@ -26,6 +26,7 @@ const swCharacters = [
   { name: "Mace Windu", type: "Jedi" },
   { name: "Emperor Palpatine", type: "Sith" },
   { name: "BB-8", type: "Rebel" },
+  { name: "Myself", type: "me" }
 ];
 
 export default function HomePage() {
@@ -42,12 +43,28 @@ export default function HomePage() {
               ? "green"
               : char.type.toLowerCase() === "sith"
               ? "red"
-              : "orange",
+              : char.type.toLowerCase() === "smuggler"
+              ? "orange"
+              : "#161616",
         }}
       >
         Name: {char.name}
       </h3>
-      <p>Type: {char.type}</p>
+      <p
+        style={{
+            color: 
+            char.type.toLowerCase() === "jedi"
+            ? "blue"
+            : char.type.toLowerCase() === "rebel"
+            ? "green"
+            : char.type.toLowerCase() === "smuggler"
+            ? "orange"
+            :char.type.toLowerCase() === "sith"
+            ? "red"
+            : "#161616"
+        }}
+        >
+        Type: {char.type}</p>
       <hr />
     </div>
   ));
