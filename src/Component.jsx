@@ -1,3 +1,4 @@
+import { type } from "@testing-library/user-event/dist/type";
 import React from "react";
 import {
   Route,
@@ -30,9 +31,17 @@ const swCharacters = [
 ];
 
 export default function HomePage() {
-  // const [searchParams, setSearchParams ] = useSearchParams();
+  const [searchParams, setSearchParams ] = useSearchParams();
+  
+ const typeFilter = searchParams.get("type");
 
-  const charEls = swCharacters.map((char) => (
+  const displayCharacters = typeFilter
+  ? swCharacters.filter(char => char.type.toLowerCase() === typeFilter)
+  : swCharacters;
+
+  const charEls = displayCharacters
+  
+  .map(char => (
     <div key={char.name}>
       <h3
         style={{
