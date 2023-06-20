@@ -38,12 +38,12 @@
 }
 .link-container-j-s {
   display: flex;
-  gap: 23px;
-
-  justify-content: center;
+  gap: 4px;
+  justify-content: space-around;
+  padding: 15px;
 }
 
-.link-container-j-s a {
+.link-container-j-s button {
   margin-top: 14px;
   width: 100px;
   padding: 4px;

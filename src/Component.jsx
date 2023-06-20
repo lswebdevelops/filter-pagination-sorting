@@ -81,15 +81,19 @@ export default function HomePage() {
     <div>
       <h1>Home</h1>
       <div className="link-container-j-s">
-        <Link to="?type=jedi">Jedi</Link>
-        <Link to="?type=sith">Sith</Link>
-        <Link to="?type=smuggler">Smuggler</Link>
-        <Link to="?type=rebel">Rebel</Link>
-        <Link to=".">All</Link>  {/* or to="" */}
-
-      
+        <button onClick={() => setSearchParams({type: "jedi"})}>Jedi</button>
+        <button onClick={() => setSearchParams({type: "sith"})}>Sith</button>
+        <button onClick={() => setSearchParams({type: "rebel"})}>Rebel</button>
+        <button onClick={() => setSearchParams({type: "smuggler"})}>Smuggler</button>
+        <button onClick={() => setSearchParams({})}>Clear</button>      
       </div>
       <div>{charEls}</div>
     </div>
+    //  <Link to="?type=jedi">Jedi</Link>
+    //  <Link to="?type=sith">Sith</Link>
+    //  <Link to="?type=smuggler">Smuggler</Link>
+    //  <Link to="?type=rebel">Rebel</Link>
+    //  <Link to=".">All</Link> 
+     
   );
 }
