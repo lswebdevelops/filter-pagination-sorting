@@ -36,3 +36,19 @@
     transform: rotate(360deg);
   }
 }
+.link-container-j-s {
+  display: flex;
+  gap: 23px;
+
+  justify-content: center;
+}
+
+.link-container-j-s a {
+  margin-top: 14px;
+  width: 100px;
+  padding: 4px;
+  border: #282c34 solid 1px;
+  border-radius: 4px;
+  background-color: #ca7d4e;
+  color: white;
+}

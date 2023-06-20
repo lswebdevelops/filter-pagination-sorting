@@ -27,21 +27,19 @@ const swCharacters = [
   { name: "Mace Windu", type: "Jedi" },
   { name: "Emperor Palpatine", type: "Sith" },
   { name: "BB-8", type: "Rebel" },
-  { name: "Myself", type: "me" }
+ 
 ];
 
 export default function HomePage() {
-  const [searchParams, setSearchParams ] = useSearchParams();
-  
- const typeFilter = searchParams.get("type");
+  const [searchParams, setSearchParams] = useSearchParams();
+
+  const typeFilter = searchParams.get("type");
 
   const displayCharacters = typeFilter
-  ? swCharacters.filter(char => char.type.toLowerCase() === typeFilter)
-  : swCharacters;
+    ? swCharacters.filter((char) => char.type.toLowerCase() === typeFilter)
+    : swCharacters;
 
-  const charEls = displayCharacters
-  
-  .map(char => (
+  const charEls = displayCharacters.map((char) => (
     <div key={char.name}>
       <h3
         style={{
@@ -61,22 +59,37 @@ export default function HomePage() {
       </h3>
       <p
         style={{
-            color: 
+          color:
             char.type.toLowerCase() === "jedi"
-            ? "blue"
-            : char.type.toLowerCase() === "rebel"
-            ? "green"
-            : char.type.toLowerCase() === "smuggler"
-            ? "orange"
-            :char.type.toLowerCase() === "sith"
-            ? "red"
-            : "#161616"
+              ? "blue"
+              : char.type.toLowerCase() === "rebel"
+              ? "green"
+              : char.type.toLowerCase() === "smuggler"
+              ? "orange"
+              : char.type.toLowerCase() === "sith"
+              ? "red"
+              : "#161616",
         }}
-        >
-        Type: {char.type}</p>
+      >
+        Type: {char.type}
+      </p>
       <hr />
     </div>
   ));
 
-  return <div>{charEls}</div>;
+  return (
+    <div>
+      <h1>Home</h1>
+      <div className="link-container-j-s">
+        <Link to="?type=jedi">Jedi</Link>
+        <Link to="?type=sith">Sith</Link>
+        <Link to="?type=smuggler">Smuggler</Link>
+        <Link to="?type=rebel">Rebel</Link>
+        <Link to=".">All</Link>  {/* or to="" */}
+
+      
+      </div>
+      <div>{charEls}</div>
+    </div>
+  );
 }
