@@ -1,5 +1,5 @@
 import "./App.css";
-import HomePage from "./components/HomePage";
+import HomePage, {loader as homePageLoader } from "./components/HomePage";
 import {
   Route, 
   createBrowserRouter,
@@ -8,7 +8,11 @@ import {
 } from "react-router-dom";
 
 const router = createBrowserRouter(createRoutesFromElements(
-  <Route path="/characters" element={<HomePage />} />
+  <Route 
+    path="/" 
+    element={<HomePage />} 
+    errorElement={<h1>There was an error</h1>}
+    loader={homePageLoader} />
 ));
 
 function App() {
