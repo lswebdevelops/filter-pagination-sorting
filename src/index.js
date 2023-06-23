@@ -1,12 +1,29 @@
-import React from 'react';
-import ReactDOM from 'react-dom/client';
-import './index.css';
-import App from './App';
+import React from "react";
+import ReactDOM from "react-dom/client";
+import {
+  RouterProvider,
+  createBrowserRouter,
+  createRoutesFromElements,
+  Route,
+} from "react-router-dom";
+import Layout from "./components/Layout";
+import AuthRequired from "./components/AuthRequired";
 
-const root = ReactDOM.createRoot(document.getElementById('root'));
-root.render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>
+const router = createBrowserRouter(
+  createRoutesFromElements(
+    <Route path="/" element={<Layout />}>
+      <Route index element={<h1>Home page</h1>} />
+
+      <Route element={<AuthRequired />}>
+        <Route path="protected" element={<h1>Super secret info here</h1>} />
+      </Route>
+      
+    </Route>
+  )
 );
 
+function App() {
+  return <RouterProvider router={router} />;
+}
+
+ReactDOM.createRoot(document.getElementById("root")).render(<App />);
