@@ -1,6 +1,5 @@
 import React from "react"
 import { Outlet, Link } from "react-router-dom"
-import '../index.css'
 
 export default function Layout() {
   return (
@@ -9,7 +8,6 @@ export default function Layout() {
       <Link to="/">Home</Link>
       <Link to="protected">Protected</Link>
       <Link to="login">Login</Link>
-
     </nav>
     <main>
       <Outlet />
