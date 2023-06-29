@@ -10,7 +10,7 @@ import {
 } from "react-router-dom"
 
 import Layout from "./Layout"
-import Login from "./Login"
+import Login, {action as loginAction} from "./Login"
 
 const router = createBrowserRouter(createRoutesFromElements(
   <Route path="/" element={<Layout />}>
@@ -32,6 +32,7 @@ const router = createBrowserRouter(createRoutesFromElements(
     <Route 
       path="login" 
       element={<Login />}
+      action={loginAction}
     />
 
   </Route>
