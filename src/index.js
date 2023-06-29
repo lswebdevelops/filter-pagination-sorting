@@ -6,13 +6,11 @@ import {
   createBrowserRouter,
   createRoutesFromElements,
   Route,
-  redirect,
-  useLoaderData
+  redirect
 } from "react-router-dom"
-import { requireAuth } from "./utils"
 
 import Layout from "./Layout"
-import AuthRequired from "./AuthRequired"
+import Login from "./Login"
 
 const router = createBrowserRouter(createRoutesFromElements(
   <Route path="/" element={<Layout />}>
@@ -23,31 +21,21 @@ const router = createBrowserRouter(createRoutesFromElements(
     <Route
       path="protected"
       element={<h1>Super secret info here</h1>}
-      loader={async () => await requireAuth()}
+      loader={async () => {
+        const isLoggedIn = false
+        if (!isLoggedIn) {
+          throw redirect("/login")
+        }
+        return null
+      }}
     />
-    <Route path="login" element={<Login />} loader={loginLoader}/>
+    <Route 
+      path="login" 
+      element={<Login />}
+    />
 
   </Route>
 ))
-
-
-function loginLoader({ request }) {
-  return new URL(request.url).searchParams.get("message")
-}
-
-function Login() {
-  const message = useLoaderData()
- 
-  return (
-    <>
-    {
-      message && <h2>{message}</h2>
-    }
-      <h1>Login page goes here</h1>
-    
-    </>
-  )
-}
 
 function App() {
   return (
