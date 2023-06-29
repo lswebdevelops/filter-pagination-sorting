@@ -1,8 +1,8 @@
 import React from "react";
 import { useNavigate, Form } from "react-router-dom";
 
-export async function action() {
-    console.log(" I am action function ");
+export async function action(obj) {
+    console.log(obj)
     return null
 }
 
