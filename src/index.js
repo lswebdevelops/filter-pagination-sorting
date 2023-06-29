@@ -30,7 +30,7 @@ const router = createBrowserRouter(createRoutesFromElements(
       }}
     />
     <Route 
-      path="login" 
+      path="login/:id" 
       element={<Login />}
       action={loginAction}
     />
